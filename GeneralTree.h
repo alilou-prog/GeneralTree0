@@ -25,6 +25,14 @@ public:
             return;
         }
 
+        // if parentData is the default value, insert under root
+        if(parentData == NODETYPE{})
+        {
+            auto newNode = getNewNode(newData);
+            root->m_children.push_back(newNode);
+            return;
+        }
+        
         // search for the parent using parentData
         GeneralTreeNode<NODETYPE> *parentPtr = search(parentData);
         if (parentPtr != nullptr)
@@ -133,17 +141,18 @@ private:
     {
         if(nodePtr != nullptr)
         {
-            padding += 5;
-            for (auto &&ptr : nodePtr->m_children)
-            {
-                printForestH_Helper(ptr, padding);
-            }
-
             for(int i{0}; i < padding; ++i)
             {
                 std::cout << ' ';
             }
             std::cout << nodePtr->getNodeData() << '\n';
+
+            padding += 5;
+            for (auto &&ptr : nodePtr->m_children)
+            {
+                printForestH_Helper(ptr, padding);
+            }
+            
         }
     }
 

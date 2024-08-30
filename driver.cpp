@@ -2,11 +2,15 @@
 
 #include <iostream>
 #include "GeneralTree.h"
+#include "ProcessInfo/ProcessInfo.h"
+
 #include <vector>
 #include <stdlib.h>
 
 using namespace std;
 
+/* the following commented code is used to test GeneralTree*/
+/*
 enum REQUESTS
 {
     QUIT = 0,
@@ -104,11 +108,10 @@ void insertRandomly(GeneralTree<int> &intTree)
     }
 
 }
-
+*/
 
 int main()
 {
-    GeneralTree<int> tree;
-    insertRandomly(tree);
-    tree.printForestH();
+    ProcessInfo top;
+    top.displayForest();
 }
